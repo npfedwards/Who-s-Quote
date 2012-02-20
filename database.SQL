@@ -31,38 +31,9 @@ CREATE TABLE IF NOT EXISTS `authors` (
 --
 
 INSERT INTO `authors` (`AuthorID`, `Author`, `Timestamp`) VALUES
-(11, 'A.N.Other', 1328019363),
-(10, 'Hey', 1328018164),
-(9, 'You', 1328017823),
-(8, 'Me', 1328017664),
-(7, '', 1328017109),
 (6, 'Jane Austen', 1328016552),
-(12, 'Your Mum', 1328020079),
-(13, 'Hello', 1328020119),
-(14, 'Oops', 1328020161),
-(15, 'Now', 1328020219),
-(16, 'Another', 1328020338),
-(17, 'Erm', 1328021055),
-(18, 'Big Ears', 1328021782),
-(19, 'Miss Austen', 1328023043),
-(20, 'Bla', 1328023881),
 (21, 'Michael Caine/Charlie Crocker', 1328027787),
-(22, 'Julia Stiles as Sara in Save the Last Dance', 1328029721),
-(23, 'Albert Einstein', 1328129460),
-(24, 'Decarte', 1328272863),
-(25, 'Nathan Edwards', 1328272935),
-(26, 'Xerxes', 1328273011),
-(27, 'Solomon', 1328273056),
-(28, 'Ren&Atilde;&copy; Descartes', 1328273194),
-(29, 'Som&Atilde;&copy;one', 1328273723),
-(30, 'M&Atilde;&copy;', 1328273928),
-(31, 'A p&Atilde;&copy;rson', 1328273946),
-(32, 'M&Atilde;&copy;', 1328274165),
-(33, 'MÃ©', 1328274230),
-(34, 'M&Atilde;&copy;', 1328274373),
-(35, 'M&Atilde;&uml;', 1328274391),
-(36, 'M&Atilde;&copy;', 1328274639),
-(37, 'M&Atilde;&copy;', 1328274708);
+(23, 'Albert Einstein', 1328129460);
 
 -- --------------------------------------------------------
 
