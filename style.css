@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	color: #777;
+	font-family: 'Gentium Book Basic', 'Georgia' serif;	
+}
+
+input{
+	padding:5px;
+	font-size:14px;
+	font-family: 'Gentium Book Basic', 'Georgia' serif;	
+}
+
+input.hintTextbox{
+	color: #BBB;
+}
+
+input.hintTextboxActive{
+	color: #777;
+}
+
+#response, .subnav{
+	display: none;
+}
+
+ul.nav{
+	padding: 0;
+	padding-top:10px;
+	margin:0;
+}
+
+ul.nav li{
+	list-style-type: none;
+	text-align:center;
+	height:50px;
+}
+
+ul.nav a{
+	font-size: 18px;	
+}
+
+.headcontainer h1{
+	margin:0px;
+	padding-top:15px;
+	padding-bottom:0px;
+}
+
+.headcontainer h2{
+	padding:0px;
+	margin:0px;
+	padding-left:30px;
+	font-size:14px;
+}
+
+.headcontainer h2 span.author{
+	font-style:italic;
+}
+
+a{
+	cursor:pointer;	
+}
+
+blockquote{
+	font-size: 24px;
+	margin: 1.5em 0;
+}
+
+span.concur{
+	float:right;	
+	background: #060;
+	color:#FFF;
+	height:18px;
+	font-size:12px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:11px;
+	margin-bottom:5px;
+}
+
+span.concur img{
+	margin: 0 4px;
+	vertical-align:middle;	
+}
