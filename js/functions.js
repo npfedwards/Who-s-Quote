@@ -21,7 +21,7 @@ function AddAuthor(id,a){
 	   alert('Cannot create XMLHTTP instance');
 	   return false;
 	}
-	var url="addauthor.php";
+	var url="checkauthor.php";
 	url=url+"?q="+id+"&a="+a;
 	url=url+"&sid="+Math.random();
 	http_request.onreadystatechange = alertContents;

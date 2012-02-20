@@ -21,20 +21,16 @@
 		</script>
     </head>
     <body>
-    	<div class="container showgrid">
+    	<div class="container">
         	<div class='headcontainer span-8'>
                 <h1>Who's Quote</h1>
                 <h2>What did you say? <span class='author'>- Gollum</span></h2>
             </div>
-            <div class='prepend-4 span-12 last'>
+            <div class='prepend-8 span-8 last'>
                 <ul class='nav'>
                     <li  class='span-4 navli'>
                     	<a href='index.php'>Home</a>
                         <p class='subnav'>Oh to be in England…</p>
-                    </li>
-                    <li class='span-4 navli' >
-                    	<a href='addquote.php'>Add Quote</a>
-                        <p class='subnav'>Words, words, mere words</p>
                     </li>
                     <li class='span-4 navli last'>
                     	<a href='what.php'>What?</a>
