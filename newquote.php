@@ -14,7 +14,7 @@
 		echo "<div class='quoteauthor'>
 				  <input type='text' name='author' id='author' value='Who said/wrote this?' class='span-5 hintTextbox' onkeydown=\"if (event.keyCode == 13) AddAuthor('".$id."', this.value)\">
 				  <span id='response'></span>
-			</div>";
+			</div><a onClick='newQuote()'>Next Quote</a>";
 				
 	}else{
 		echo "An error occured. Skip to the next quote";	
