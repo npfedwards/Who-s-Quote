@@ -118,45 +118,11 @@ if (window.ActiveXObject)
 return null;
 }
 
-// Script written by Drew Noakes -- http://drewnoakes.com
-// 14 Dec 2006
-
-var HintClass = "hintTextbox";
-var HintActiveClass = "hintTextboxActive";
-
-// define a custom method on the string class to trim leading and training spaces
-String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); };
-
-function initHintTextboxes() {
-  var inputs = document.getElementsByTagName('input');
-  for (i=0; i<inputs.length; i++) {
-    var input = inputs[i];
-    if (input.type!="text")
-      continue;
-      
-    if (input.className.indexOf(HintClass)!=-1) {
-      input.hintText = input.value;
-      input.className = HintClass;
-      input.onfocus = onHintTextboxFocus;
-      input.onblur = onHintTextboxBlur;
-    }
-  }
+//Function for removing hint text and changing the class of inputs
+function textboxOnFocus(input){
+	var value=input.value;
+	if(value === "Who said/wrote this?"){
+		input.value="";
+		$(input).addClass("hintTextboxActive");
+	}
 }
-
-function onHintTextboxFocus() {
-  var input = this;
-  if (input.value.trim()==input.hintText) {
-    input.value = "";
-    input.className = HintActiveClass;
-  }
-}
-
-function onHintTextboxBlur() {
-  var input = this;
-  if (input.value.trim().length==0) {
-    input.value = input.hintText;
-    input.className = HintClass;
-  }
-}
-
-window.onload = initHintTextboxes;

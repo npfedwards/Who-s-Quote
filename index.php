@@ -20,7 +20,7 @@
 				echo "<blockquote class='quote'>".stripslashes($row['Quote'])."
 				</blockquote>";
 				echo "<div class='quoteauthor'>
-						  <input type='text' name='author' id='author' value='Who said/wrote this?' class='span-5 hintTextbox' onkeydown=\"if (event.keyCode == 13) AddAuthor('".$id."', this.value)\">
+						  <input type='text' name='author' id='author' value='Who said/wrote this?' class='span-5 hintTextbox' onkeydown=\"if (event.keyCode == 13) AddAuthor('".$id."', this.value)\" onFocus=\"textboxOnFocus(this)\">
 						  <span id='response'></span>
 					</div>";
 						
