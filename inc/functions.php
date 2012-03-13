@@ -1,5 +1,6 @@
 <?php
 function newQuote(){
+			$id=mysql_real_escape_string(htmlentities($_GET['id']));
 			if($id==NULL){
 				$query="SELECT * FROM quotes";
 				$result=mysql_query($query) or die(mysql_error());
@@ -10,7 +11,7 @@ function newQuote(){
 				$query="SELECT * FROM quotes WHERE QuoteID='$id'";
 			}
 			$result=mysql_query($query) or die(mysql_error());
-			if(mysql_num_rows!=NULL){
+			if(mysql_num_rows($result)!=NULL){
 				$row=mysql_fetch_assoc($result);
 				$id=$row['QuoteID'];
 				echo "<blockquote class='quote'>".stripslashes($row['Quote'])."
