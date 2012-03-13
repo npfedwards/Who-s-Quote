@@ -1,5 +1,5 @@
 var http_request = false;
-function AddAuthor(id,a){
+function CheckAuthor(id,a){
 	http_request = false;
 	if (window.XMLHttpRequest) { // Mozilla, Safari,...
 	   http_request = new XMLHttpRequest();
