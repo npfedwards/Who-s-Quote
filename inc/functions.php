@@ -1,47 +1,58 @@
 <?php
 function newQuote(){
-			$id=mysql_real_escape_string(htmlentities($_GET['id']));
-			if($id==NULL){
+			$id=mysql_real_escape_string(htmlentities($_GET['id'])); //If an id argument is passed in the URL then we'll show that Quote
+			if($id==NULL){ //otherwise find a random one
 				$query="SELECT * FROM quotes";
 				$result=mysql_query($query) or die(mysql_error());
-				$rows=mysql_num_rows($result);
-				$num=rand(0, $rows-1);
-				$query="SELECT * FROM quotes LIMIT ".$num.",1";
+				$rows=mysql_num_rows($result); //Get the number of rows in the table
+				$num=rand(0, $rows-1); //Find a random row
+				$query="SELECT * FROM quotes LIMIT ".$num.",1"; //Select that row from the table
 			}else{
 				$query="SELECT * FROM quotes WHERE QuoteID='$id'";
 			}
 			$result=mysql_query($query) or die(mysql_error());
-			if(mysql_num_rows($result)!=NULL){
+			if(mysql_num_rows($result)!=NULL){ //Check we have a quote
 				$row=mysql_fetch_assoc($result);
 				$id=$row['QuoteID'];
 				echo "<blockquote class='quote'>".stripslashes($row['Quote'])."
 				</blockquote>";
-				$query="SELECT * FROM authors WHERE AuthorID<>'".$row['AuthorID']."' LIMIT 0,3";
+				$query="SELECT AuthorID FROM authors WHERE AuthorID<>'".$row['AuthorID']."' LIMIT 0,3";
 				$result=mysql_query($query) or die(mysql_error());
+				$numrows=mysql_num_rows($result)-1; //Number of rows to chose from -1 to account for row 0.
+				$rownum=array(rand(0,$numrows),rand(0,$numrows),rand(0,$numrows)); //Find three random quotes
 				
-				$rand=rand(1,4);
+				while($rownum[0]==$rownum[1]){ //Make sure 0 != 1
+					$rownum[1]=rand(0,$numrows); 
+				}
+				while($rownum[0]==$rownum[2] || $rownum[1]==$rownum[2]){ // Make sure 0!=2 
+					$rownum[2]=rand(0,$numrows);
+				}
 				
-				
+				$rand=rand(0,3); //Position of correct answer
 				$i=0;
 				
-				while($rows=mysql_fetch_assoc($result)){
-					$i++;
-					if($rand==$i){
+				while($i<3){
+					if($rand==$i){//depending on position display correct answer
 						$query="SELECT * FROM authors WHERE AuthorID='".$row['AuthorID']."'";
 						$re=mysql_query($query) or die(mysql_error());
 						$ro=mysql_fetch_assoc($re);
 						echo "<div class='option'><a onClick=\"CheckAuthor(".$id.",".$row['AuthorID'].")\">".stripslashes($ro['Author'])."</a></div>";
 					}
+					//SELECT and display other answers
+					$query="SELECT * FROM authors WHERE AuthorID<>'".$row['AuthorID']."' LIMIT ".$rownum[$i].",1";
+					$result=mysql_query($query) or die(mysql_error());
+					$rows=mysql_fetch_assoc($result);
 					echo "<div class='option'><a onClick=\"CheckAuthor(".$id.",".$rows['AuthorID'].")\">".stripslashes($rows['Author'])."</a></div>";
+					$i++;
 				}
-				if($rand==4){
+				if($rand==3){
 					$query="SELECT * FROM authors WHERE AuthorID='".$row['AuthorID']."'";
 					$re=mysql_query($query) or die(mysql_error());
 					$ro=mysql_fetch_assoc($re);
 					echo "<div class='option'><a onClick=\"CheckAuthor(".$id.",".$row['AuthorID'].")\">".stripslashes($ro['Author'])."</a></div>";
 				}
 										
-			}else{
+			}else{ //We don't have a quote... oops
 				echo "An error occured. Skip to the next quote";	
 			}
 		
