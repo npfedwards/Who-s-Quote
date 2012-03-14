@@ -7,6 +7,7 @@ function newQuote(){
 				$rows=mysql_num_rows($result); //Get the number of rows in the table
 				$num=rand(0, $rows-1); //Find a random row
 				$query="SELECT * FROM quotes LIMIT ".$num.",1"; //Select that row from the table
+				//This is to test GIT is set up correctly...
 			}else{
 				$query="SELECT * FROM quotes WHERE QuoteID='$id'";
 			}
