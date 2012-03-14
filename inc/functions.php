@@ -16,7 +16,7 @@ function newQuote(){
 				$id=$row['QuoteID'];
 				echo "<blockquote class='quote'>".stripslashes($row['Quote'])."
 				</blockquote>";
-				$query="SELECT AuthorID FROM authors WHERE AuthorID<>'".$row['AuthorID']."' LIMIT 0,3";
+				$query="SELECT AuthorID FROM authors WHERE AuthorID<>'".$row['AuthorID']."'";
 				$result=mysql_query($query) or die(mysql_error());
 				$numrows=mysql_num_rows($result)-1; //Number of rows to chose from -1 to account for row 0.
 				$rownum=array(rand(0,$numrows),rand(0,$numrows),rand(0,$numrows)); //Find three random quotes
@@ -30,26 +30,37 @@ function newQuote(){
 				
 				$rand=rand(0,3); //Position of correct answer
 				$i=0;
+				$n=0;
 				
 				while($i<3){
 					if($rand==$i){//depending on position display correct answer
 						$query="SELECT * FROM authors WHERE AuthorID='".$row['AuthorID']."'";
 						$re=mysql_query($query) or die(mysql_error());
 						$ro=mysql_fetch_assoc($re);
-						echo "<div class='option'><a onClick=\"CheckAuthor(".$id.",".$row['AuthorID'].")\">".stripslashes($ro['Author'])."</a></div>";
+						echo "<div class='option span-8";
+						if($n%2==1){
+							echo " last";	
+						}
+						echo "'><a class='span-7' onClick=\"CheckAuthor(".$id.",".$row['AuthorID'].")\">".stripslashes($ro['Author'])."</a></div>";
+						$n++;
 					}
 					//SELECT and display other answers
 					$query="SELECT * FROM authors WHERE AuthorID<>'".$row['AuthorID']."' LIMIT ".$rownum[$i].",1";
 					$result=mysql_query($query) or die(mysql_error());
 					$rows=mysql_fetch_assoc($result);
-					echo "<div class='option'><a onClick=\"CheckAuthor(".$id.",".$rows['AuthorID'].")\">".stripslashes($rows['Author'])."</a></div>";
+					echo "<div class='option span-8";
+					if($n%2==1){
+						echo " last";	
+					}
+					echo "'><a class='span-7' onClick=\"CheckAuthor(".$id.",".$rows['AuthorID'].")\">".stripslashes($rows['Author'])."</a></div>";
 					$i++;
+					$n++;
 				}
 				if($rand==3){
 					$query="SELECT * FROM authors WHERE AuthorID='".$row['AuthorID']."'";
 					$re=mysql_query($query) or die(mysql_error());
 					$ro=mysql_fetch_assoc($re);
-					echo "<div class='option'><a onClick=\"CheckAuthor(".$id.",".$row['AuthorID'].")\">".stripslashes($ro['Author'])."</a></div>";
+					echo "<div class='option last'><a class='span-7' onClick=\"CheckAuthor(".$id.",".$row['AuthorID'].")\">".stripslashes($ro['Author'])."</a></div>";
 				}
 										
 			}else{ //We don't have a quote... oops

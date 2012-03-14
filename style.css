@@ -3,7 +3,8 @@
 
 body{
 	color: #777;
-	font-family: 'Gentium Book Basic', 'Georgia' serif;	
+	font-family: 'Gentium Book Basic', 'Georgia' serif;
+	transition-duration:0.3s;	
 }
 
 input{
@@ -64,6 +65,27 @@ a{
 blockquote{
 	font-size: 24px;
 	margin: 1.5em 0;
+}
+
+.option{
+	margin-bottom:10px;	
+}
+
+.option a{
+	border:1px solid #777;
+	border-radius:5px;
+	padding: 10px;
+	float:left;
+	text-decoration:none;
+}
+
+.option a:hover, .option a:focus{
+	background:#080;
+	color:#FFF;
+}
+
+.option a:active{
+	box-shadow:inset 3px 3px 2px #000;	
 }
 
 span.concur{
