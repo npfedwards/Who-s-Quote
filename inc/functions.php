@@ -16,7 +16,7 @@ function newQuote(){
 				$row=mysql_fetch_assoc($result);
 				$id=$row['QuoteID'];
 				echo "<blockquote class='quote'>".stripslashes($row['Quote'])."
-				</blockquote>";
+				</blockquote><div id='author'>";
 				$query="SELECT AuthorID FROM authors WHERE AuthorID<>'".$row['AuthorID']."'";
 				$result=mysql_query($query) or die(mysql_error());
 				$numrows=mysql_num_rows($result)-1; //Number of rows to chose from -1 to account for row 0.
@@ -68,7 +68,7 @@ function newQuote(){
 				echo "An error occured. Skip to the next quote";	
 			}
 		
-        echo "<div id='response'></div><a onClick=\"newQuote()\">Next Quote</a>";
+        echo "</div><div id='response'></div><a onClick=\"newQuote()\">Next Quote</a>";
 
 }
 
