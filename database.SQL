@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 14, 2012 at 04:41 PM
+-- Generation Time: Mar 16, 2012 at 06:28 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -11,6 +11,25 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
 -- Database: `wq`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answers`
+--
+
+CREATE TABLE IF NOT EXISTS `answers` (
+  `AnswerID` int(11) NOT NULL AUTO_INCREMENT,
+  `UserID` int(11) NOT NULL,
+  `QuoteID` int(11) NOT NULL,
+  `Timestamp` int(11) NOT NULL,
+  `Correct` tinyint(1) NOT NULL,
+  PRIMARY KEY (`AnswerID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `answers`
 --
 
 -- --------------------------------------------------------
@@ -61,3 +80,20 @@ INSERT INTO `quotes` (`QuoteID`, `Quote`, `Timestamp`, `AuthorID`) VALUES
 (7, 'Pure mathematics is, in its way, the poetry of logical ideas', 1328129444, 23),
 (11, 'The same thing we do every night Pinky, try to take over the world', 1331743037, 39),
 (10, 'Ich bin ein Berliner (I am a pastry)', 1328274708, 38);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
+  `UserString` varchar(100) NOT NULL,
+  `IP` varchar(20) NOT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `users`
+--
