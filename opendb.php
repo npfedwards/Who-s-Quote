@@ -1,7 +1,7 @@
 <?php
 	//Set the host address of your mySQL database (usually 'localhost'):
 	$dbhost = 'localhost';
-	//Set the user of your databse (usually 'root'):
+	//Set the user of your database:
 	$dbuser = 'root';
 	//Set the password for your databse:
 	$dbpass = '';
