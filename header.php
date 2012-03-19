@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Who's Quote?</title>
         <script type="text/javascript" src="js/prefixfree.min.js"></script>
+		<link rel="shortcut icon" href="img/favicon.ico">
         <link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="blueprint/screen.css" type="text/css" media="all">
         <link rel="stylesheet" href="blueprint/print.css" type="text/css" media="print">
