@@ -1,9 +1,19 @@
 <?php
+	//Set the host address of your mySQL database (usually 'localhost'):
 	$dbhost = 'localhost';
-	$dbuser = 'wq';
+	//Set the user of your databse (usually 'root'):
+	$dbuser = 'root';
+	//Set the password for your databse:
 	$dbpass = '';
-	$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die(mysql_error());
+	//Set the name of your database:
 	$dbname = 'wq';
-	$tableprefix = 'test_';
+	//Set a table prefix for Who's Quotes - this allows multiple installations to be in the same database.  Useful if you only have access to one database (on shared hosting):
+	$tableprefix = '';
+	/*	
+		=================
+		End Customization Options
+		=================
+	*/
+	$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die(mysql_error());
 	$dbc = mysql_select_db($dbname) or die("Failed to connect");
 ?>
