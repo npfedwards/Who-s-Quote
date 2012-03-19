@@ -1,6 +1,11 @@
 <?php
 function newQuote(){
-			$id=mysql_real_escape_string(htmlentities($_GET['id'])); //If an id argument is passed in the URL then we'll show that Quote
+			
+			if(isset($_GET['id'])){ //Checks to see if an ID has been passed by the URL
+				$id=mysql_real_escape_string(htmlentities($_GET['id'])); //If an id argument is passed in the URL then we'll show that Quote
+			}else{
+				$id=NULL;
+			}
 			if($id==NULL){ //otherwise find a random one
 				$query="SELECT * FROM quotes";
 				$result=mysql_query($query) or die(mysql_error());
