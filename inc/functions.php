@@ -2,9 +2,9 @@
 function newQuote(){
 			
 			if(isset($_GET['id'])){ //Checks to see if an ID has been passed by the URL
-			$id=mysql_real_escape_string(htmlentities($_GET['id'])); //If an id argument is passed in the URL then we'll show that Quote
+				$id=mysql_real_escape_string(htmlentities($_GET['id'])); //If an id argument is passed in the URL then we'll show that Quote
 			}else{
-			$id=NULL;
+				$id=NULL;
 			}
 			if($id==NULL){ //otherwise find a random one
 				$query="SELECT * FROM quotes";
@@ -12,7 +12,6 @@ function newQuote(){
 				$rows=mysql_num_rows($result); //Get the number of rows in the table
 				$num=rand(0, $rows-1); //Find a random row
 				$query="SELECT * FROM quotes LIMIT ".$num.",1"; //Select that row from the table
-				//This is to test GIT is set up correctly...
 			}else{
 				$query="SELECT * FROM quotes WHERE QuoteID='$id'";
 			}

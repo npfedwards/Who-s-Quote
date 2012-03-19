@@ -1,6 +1,6 @@
 <?php
 	$dbhost = 'localhost';
-	$dbuser = 'root';
+	$dbuser = 'wq';
 	$dbpass = '';
 	$conn = mysql_connect($dbhost, $dbuser, $dbpass) or die(mysql_error());
 	$dbname = 'wq';
