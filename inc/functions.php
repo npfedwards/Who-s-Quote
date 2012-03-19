@@ -1,5 +1,6 @@
 <?php
 function newQuote(){
+			global $tableprefix;
 			if(isset($_GET['id'])){ //Checks to see if an ID has been passed by the URL
 				$id=mysql_real_escape_string(htmlentities($_GET['id'])); //If an id argument is passed in the URL then we'll show that Quote
 			}else{
