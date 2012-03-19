@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Who's Quote?</title>
         <script type="text/javascript" src="js/prefixfree.min.js"></script><!--Prefix Free. No need for prefixes in stylesheets-->
-<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic' rel='stylesheet' type='text/css'><!--Google Web Font Stylesheet-->
+		<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400italic' rel='stylesheet' type='text/css'><!--Google Web Font Stylesheet-->
 		<link rel="shortcut icon" href="img/favicon.ico">
         <link rel="stylesheet" href="blueprint/screen.css" type="text/css" media="all">
         <link rel="stylesheet" href="blueprint/print.css" type="text/css" media="print">
@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="style.css" type="text/css" media="all">
         <script type="text/javascript" src="js/functions.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript"><!--JS for nav hovers... probably change to CSS-->
 			$(document).ready(function($) {
 				$('.navli').hover(function(){
 					$('.subnav', this).stop().fadeIn(1000);

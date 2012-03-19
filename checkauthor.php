@@ -10,7 +10,7 @@
 	$ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
 	
 	//Get user from table
-	$query="SELECT * FROM users WHERE UserString='$user' AND IP='$ip'";
+	$query="SELECT * FROM ".$dbprefix."users WHERE UserString='$user' AND IP='$ip'";
 	$result=mysql_query($query) or die(mysql_error());
 	
 	if(mysql_num_rows($result)==1){ //if there is a user
@@ -21,46 +21,46 @@
 	}else{ //if there isn't a user (or if the IP address has changed)
 	
 		$user=sha1(rand()); //create a random hash
-		$query="SELECT * FROM users WHERE UserString='$user'";
+		$query="SELECT * FROM ".$dbprefix."users WHERE UserString='$user'";
 		$result=mysql_query($query) or die(mysql_error());
 		
 		while(mysql_num_rows($result)==1){ //if we have a clash
 			$user=sha1(rand()); //create a random hash
-			$query="SELECT * FROM users WHERE UserString='$user'";
+			$query="SELECT * FROM ".$dbprefix."users WHERE UserString='$user'";
 			$result=mysql_query($query) or die(mysql_error());
 		}
 		setcookie('user', $user, time()+86400*365);
 		//Insert new user data
-		$query="INSERT INTO users (UserString, IP) VALUES ('$user','$ip')";
+		$query="INSERT INTO ".$dbprefix."users (UserString, IP) VALUES ('$user','$ip')";
 		mysql_query($query) or die(mysql_error());
 		$userid=mysql_insert_id();
 	}
 	
 	//Does the Author name match the DB?
-	$query="SELECT * FROM quotes LEFT JOIN authors ON quotes.AuthorID=authors.AuthorID WHERE QuoteID='$q' AND authors.AuthorID='$author' LIMIT 0,1";
+	$query="SELECT * FROM ".$dbprefix."quotes LEFT JOIN ".$dbprefix."authors ON ".$dbprefix."quotes.AuthorID=authors.AuthorID WHERE QuoteID='$q' AND ".$dbprefix."authors.AuthorID='$author' LIMIT 0,1";
 	$result=mysql_query($query) or die(mysql_error());
 	if(mysql_num_rows($result)==1){
 		//Database insert for correctness
-		$query="INSERT INTO answers (UserID, QuoteID, Timestamp, Correct) VALUES ('$userid', '$q', '".time()."', '1')";
+		$query="INSERT INTO ".$dbprefix."answers (UserID, QuoteID, Timestamp, Correct) VALUES ('$userid', '$q', '".time()."', '1')";
 		mysql_query($query) or die(mysql_error());
 		
-		$query="SELECT * FROM answers WHERE UserID='$userid'";
+		$query="SELECT * FROM ".$dbprefix."answers WHERE UserID='$userid'";
 		$result=mysql_query($query) or die(mysql_error());
 		$quotes=mysql_num_rows($result);
-		$query="SELECT * FROM answers WHERE UserID='$userid' AND Correct='1'";
+		$query="SELECT * FROM ".$dbprefix."answers WHERE UserID='$userid' AND Correct='1'";
 		$result=mysql_query($query) or die(mysql_error());
 		$correct=mysql_num_rows($result);
 		//Send back some text...
 		echo "Correct! So far you have answered ".$correct."/".$quotes." correctly";
 	}else{
 		//Database insert for wrongness
-		$query="INSERT INTO answers (UserID, QuoteID, Timestamp, Correct) VALUES ('$userid', '$q', '".time()."', '0')";
+		$query="INSERT INTO ".$dbprefix."answers (UserID, QuoteID, Timestamp, Correct) VALUES ('$userid', '$q', '".time()."', '0')";
 		mysql_query($query) or die(mysql_error());
 		
-		$query="SELECT * FROM answers WHERE UserID='$userid'";
+		$query="SELECT * FROM ".$dbprefix."answers WHERE UserID='$userid'";
 		$result=mysql_query($query) or die(mysql_error());
 		$quotes=mysql_num_rows($result);
-		$query="SELECT * FROM answers WHERE UserID='$userid' AND Correct='1'";
+		$query="SELECT * FROM ".$dbprefix."answers WHERE UserID='$userid' AND Correct='1'";
 		$result=mysql_query($query) or die(mysql_error());
 		$correct=mysql_num_rows($result);
 		//Send back some text...
