@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 16, 2012 at 06:28 PM
+-- Generation Time: Mar 20, 2012 at 10:40 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -26,11 +26,12 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `Timestamp` int(11) NOT NULL,
   `Correct` tinyint(1) NOT NULL,
   PRIMARY KEY (`AnswerID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `answers`
 --
+
 
 -- --------------------------------------------------------
 
@@ -84,6 +85,26 @@ INSERT INTO `quotes` (`QuoteID`, `Quote`, `Timestamp`, `AuthorID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `SessionID` int(11) NOT NULL AUTO_INCREMENT,
+  `SessionKey` varchar(100) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `IP` varchar(20) NOT NULL,
+  `Timestamp` int(11) NOT NULL,
+  PRIMARY KEY (`SessionID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `sessions`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -91,8 +112,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `UserID` int(11) NOT NULL AUTO_INCREMENT,
   `UserString` varchar(100) NOT NULL,
   `IP` varchar(20) NOT NULL,
+  `Admin` tinyint(1) NOT NULL,
+  `UserName` varchar(100) NOT NULL,
+  `Password` varchar(100) NOT NULL,
+  `Salt` varchar(10) NOT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `users`
